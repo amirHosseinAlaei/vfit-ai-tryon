@@ -1,0 +1,2047 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V-Fit AI Pro | اتاق پرو هوشمند و رایگان لباس</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --primary-light: rgba(99, 102, 241, 0.14);
+      --accent: #ec4899;
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+      --bg-dark: #090e1a;
+      --bg-card: rgba(24, 34, 54, 0.76);
+      --bg-card-border: rgba(255, 255, 255, 0.09);
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      min-height: 100vh;
+      overflow-x: hidden;
+      background-image:
+        radial-gradient(at 12% 14%, rgba(99, 102, 241, 0.18) 0px, transparent 50%),
+        radial-gradient(at 88% 82%, rgba(236, 72, 153, 0.14) 0px, transparent 50%),
+        radial-gradient(at 50% 50%, rgba(16, 185, 129, 0.05) 0px, transparent 60%);
+      background-attachment: fixed;
+    }
+
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid var(--bg-card-border);
+      backdrop-filter: blur(16px);
+      background: rgba(9, 14, 26, 0.8);
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 1.3rem;
+      font-weight: 900;
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--accent-gradient);
+      border-radius: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      -webkit-text-fill-color: white;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 14px rgba(168, 85, 247, 0.35);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge-free {
+      background: rgba(16, 185, 129, 0.14);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #34d399;
+      padding: 6px 14px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .badge-free .dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+
+    /* Hero */
+    .hero {
+      text-align: center;
+      padding: 2.5rem 1.25rem 1.25rem;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-light);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      color: #c7d2fe;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.45rem;
+      font-weight: 900;
+      line-height: 1.3;
+      margin-bottom: 0.85rem;
+    }
+
+    .hero h1 span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Main Container */
+    .studio-container {
+      max-width: 1220px;
+      margin: 1.5rem auto 4rem;
+      padding: 0 1.25rem;
+    }
+
+    /* Category & Engine Control Panel */
+    .control-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1.4rem;
+      margin-bottom: 1.5rem;
+      backdrop-filter: blur(16px);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .control-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .control-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .control-label {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .category-pills {
+      display: inline-flex;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .cat-pill {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      padding: 7px 14px;
+      border-radius: 9px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .cat-pill.active {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 3px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    select.engine-select {
+      background: #0f172a;
+      color: #f8fafc;
+      border: 1px solid rgba(99, 102, 241, 0.45);
+      border-radius: 10px;
+      padding: 8px 12px;
+      font-size: 0.84rem;
+      cursor: pointer;
+      outline: none;
+      max-width: 100%;
+    }
+
+    .advanced-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding-top: 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.83rem;
+      color: var(--text-muted);
+    }
+
+    .slider-inline {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .slider-inline input[type="range"] {
+      accent-color: var(--accent);
+      width: 115px;
+      cursor: pointer;
+    }
+
+    .toggle-wrap {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      color: #cbd5e1;
+    }
+
+    .toggle-wrap input {
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+
+    /* Try-On Grid */
+    .tryon-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 900px) {
+      .tryon-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 1.85rem; }
+      header { padding: 0.9rem 1.1rem; }
+    }
+
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem;
+      backdrop-filter: blur(16px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.08rem;
+      font-weight: 700;
+    }
+
+    .step-number {
+      width: 28px;
+      height: 28px;
+      background: var(--accent-gradient);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 800;
+    }
+
+    .image-preview-box {
+      width: 100%;
+      height: 390px;
+      border-radius: var(--radius-md);
+      background: #111827;
+      border: 2px dashed rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.25s ease;
+    }
+
+    .image-preview-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #f8fafc;
+      border-radius: var(--radius-md);
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    #userStageWrap {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: #0d1424;
+    }
+
+    #userImg {
+      background: #0d1424;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+
+    #maskCanvas {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      touch-action: none;
+      border-radius: 6px;
+    }
+
+    #maskCanvas.drawing {
+      pointer-events: auto;
+      cursor: crosshair;
+    }
+
+    .garment-info-tag {
+      position: absolute;
+      bottom: 10px;
+      right: 10px;
+      left: 10px;
+      background: rgba(15, 23, 42, 0.88);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .upload-area {
+      cursor: pointer;
+      border-color: rgba(99, 102, 241, 0.45);
+      background: rgba(99, 102, 241, 0.04);
+    }
+
+    .upload-area:hover, .upload-area.dragover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    .upload-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 11px;
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .upload-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+    }
+
+    /* Preset Chips */
+    .chips-section {
+      margin-top: 12px;
+    }
+
+    .chips-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-bottom: 7px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .preset-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    .preset-chip {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #cbd5e1;
+      padding: 5px 11px;
+      border-radius: 16px;
+      font-size: 0.76rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .preset-chip:hover {
+      background: rgba(99, 102, 241, 0.2);
+      border-color: rgba(99, 102, 241, 0.5);
+      color: white;
+    }
+
+    .preset-chip.active {
+      background: rgba(99, 102, 241, 0.3);
+      border-color: #818cf8;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .preset-chip.highlight-hint {
+      animation: chipGlow 1.5s ease-in-out 2;
+    }
+
+    @keyframes chipGlow {
+      0%, 100% { border-color: rgba(255,255,255,0.12); }
+      50% { border-color: #f59e0b; box-shadow: 0 0 10px rgba(245, 158, 11, 0.45); }
+    }
+
+    .input-field {
+      width: 100%;
+      background: #0f172a;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 10px;
+      padding: 9px 12px;
+      color: white;
+      font-size: 0.82rem;
+      direction: ltr;
+      outline: none;
+    }
+
+    .input-field:focus {
+      border-color: var(--primary);
+    }
+
+    /* Brush Toolbar */
+    .brush-toolbar {
+      display: none;
+      margin-top: 12px;
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(236, 72, 153, 0.35);
+      border-radius: 12px;
+      padding: 10px 12px;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .brush-toolbar-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .brush-hint {
+      font-size: 0.76rem;
+      color: #fbcfe8;
+      line-height: 1.5;
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      color: white;
+      padding: 7px 14px;
+      border-radius: 18px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn-secondary.active-brush {
+      background: rgba(236, 72, 153, 0.28);
+      border-color: #ec4899;
+      color: #fdf2f8;
+      font-weight: 700;
+    }
+
+    /* Action Bar */
+    .action-bar {
+      text-align: center;
+      margin: 1.75rem 0;
+    }
+
+    .btn-tryon {
+      background: var(--accent-gradient);
+      color: white;
+      border: none;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      font-size: 1.12rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 10px 28px rgba(168, 85, 247, 0.42);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-tryon:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 14px 36px rgba(236, 72, 153, 0.52);
+    }
+
+    .btn-tryon:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+
+    .action-tips {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+    }
+
+    /* Error Box */
+    .error-box {
+      display: none;
+      background: rgba(239, 68, 68, 0.12);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: var(--radius-md);
+      padding: 1.2rem 1.4rem;
+      margin-top: 1.25rem;
+      color: #fecaca;
+      line-height: 1.7;
+      font-size: 0.9rem;
+    }
+
+    .error-box strong {
+      color: #f87171;
+      display: block;
+      margin-bottom: 6px;
+      font-size: 0.98rem;
+    }
+
+    .error-details {
+      margin-top: 8px;
+      background: rgba(0, 0, 0, 0.38);
+      padding: 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.78rem;
+      direction: ltr;
+      text-align: left;
+      white-space: pre-wrap;
+      word-break: break-word;
+      color: #fca5a5;
+    }
+
+    /* Result Section */
+    .result-section {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--bg-card-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      backdrop-filter: blur(16px);
+      margin-top: 2rem;
+      animation: fadeIn 0.45s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(14px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .result-header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .result-meta {
+      margin-top: 8px;
+      font-size: 0.84rem;
+      color: #34d399;
+    }
+
+    .view-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Interactive Before/After Slider */
+    .ba-slider-wrap {
+      display: none;
+      max-width: 480px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.3);
+      background: #0f172a;
+      aspect-ratio: 3 / 4;
+      user-select: none;
+    }
+
+    .ba-slider-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0f172a;
+      pointer-events: none;
+    }
+
+    .ba-after-layer {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 0 0 50%);
+    }
+
+    .ba-divider {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.6);
+      pointer-events: none;
+    }
+
+    .ba-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--accent-gradient);
+      border: 2px solid white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.45);
+      pointer-events: none;
+    }
+
+    .ba-range {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: ew-resize;
+      margin: 0;
+      direction: ltr;
+    }
+
+    .ba-tag {
+      position: absolute;
+      top: 12px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.8);
+      color: white;
+      pointer-events: none;
+    }
+
+    .ba-tag.before { left: 12px; }
+    .ba-tag.after { right: 12px; background: rgba(236, 72, 153, 0.85); }
+
+    .result-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.35fr;
+      gap: 1.4rem;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .result-comparison { grid-template-columns: 1fr; }
+    }
+
+    .comparison-item {
+      text-align: center;
+    }
+
+    .comparison-item h4 {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      margin-bottom: 9px;
+    }
+
+    .comparison-item img {
+      width: 100%;
+      height: 360px;
+      object-fit: contain;
+      border-radius: var(--radius-md);
+      border: 2px solid rgba(255, 255, 255, 0.08);
+      background: #0f172a;
+    }
+
+    .comparison-item.highlight img {
+      border: 3px solid var(--accent);
+      box-shadow: 0 0 28px rgba(236, 72, 153, 0.35);
+      height: 440px;
+    }
+
+    .result-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      background: #10b981;
+      color: white;
+      border: none;
+      padding: 11px 24px;
+      border-radius: 25px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .download-btn:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+
+    .retry-btn {
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.5);
+      color: #c7d2fe;
+      padding: 11px 22px;
+      border-radius: 25px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .retry-btn:hover {
+      background: rgba(99, 102, 241, 0.35);
+      color: white;
+    }
+
+    /* Processing Overlay */
+    .processing-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(9, 14, 26, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 15px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .spinner {
+      width: 64px;
+      height: 64px;
+      border: 4px solid rgba(99, 102, 241, 0.2);
+      border-top-color: #ec4899;
+      border-radius: 50%;
+      animation: spin 0.9s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    .processing-status {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #f8fafc;
+    }
+
+    .processing-subtext {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    .processing-timer {
+      font-size: 0.84rem;
+      color: #a5b4fc;
+      background: rgba(99, 102, 241, 0.16);
+      padding: 5px 15px;
+      border-radius: 20px;
+    }
+
+    .cancel-btn {
+      margin-top: 6px;
+      background: rgba(239, 68, 68, 0.18);
+      border: 1px solid rgba(239, 68, 68, 0.45);
+      color: #fca5a5;
+      padding: 7px 20px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* Settings Modal */
+    .settings-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(6px);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .settings-card {
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 18px;
+      padding: 1.75rem;
+      width: 100%;
+      max-width: 540px;
+    }
+
+    .settings-card h3 {
+      margin-bottom: 0.7rem;
+      font-size: 1.12rem;
+    }
+
+    .settings-field {
+      margin: 1rem 0;
+    }
+
+    .settings-field label {
+      display: block;
+      font-size: 0.84rem;
+      color: #cbd5e1;
+      margin-bottom: 6px;
+    }
+
+    .settings-help {
+      font-size: 0.77rem;
+      color: var(--text-muted);
+      margin-top: 5px;
+      line-height: 1.55;
+    }
+
+    .settings-help a {
+      color: #818cf8;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="brand">
+      <div class="brand-icon">✦</div>
+      <span>اتاق پرو هوشمند V-Fit Pro</span>
+    </div>
+
+    <div class="header-actions">
+      <div class="badge-free">
+        <span class="dot"></span>
+        <span>۶ موتور واقعی هوش مصنوعی • رایگان</span>
+      </div>
+      <button class="btn-secondary" onclick="openSettings()">⚙️ تنظیمات توکن</button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-badge">
+      <span>✨ نسل جدید اتاق پرو با Leffa، FitDiT، IDM-VTON و OOTDiffusion — بدون نشت لباس قبلی</span>
+    </div>
+    <h1>لباس را انتخاب کن؛ <span>بی‌نقص تن خودت ببین!</span></h1>
+    <p>
+      پشتیبانی کامل از <strong>بالاتنه، مانتو/پیراهن بلند و پایین‌تنه</strong>، همراه با <strong>گسترش هوشمند ماسک</strong> و <strong>قلم‌موی پاک‌کن لباس قبلی</strong> تا دیگر زیپ یا آستین لباس اول زیر لباس جدید بیرون نزند.
+    </p>
+  </section>
+
+  <!-- Studio -->
+  <main class="studio-container">
+
+    <!-- Category & Engine Controls -->
+    <div class="control-panel">
+      <div class="control-row">
+        <div class="control-group">
+          <span class="control-label">👗 دسته‌بندی لباس:</span>
+          <div class="category-pills" id="categoryPills">
+            <button type="button" class="cat-pill active" data-cat="upper" onclick="setCategory('upper')">👕 بالاتنه</button>
+            <button type="button" class="cat-pill" data-cat="dress" onclick="setCategory('dress')">🧥 مانتو / پیراهن</button>
+            <button type="button" class="cat-pill" data-cat="lower" onclick="setCategory('lower')">👖 شلوار / دامن</button>
+          </div>
+        </div>
+
+        <div class="control-group">
+          <span class="control-label">🧠 موتور هوش مصنوعی:</span>
+          <select id="engineSelect" class="engine-select">
+            <option value="auto" selected>هوشمند خودکار (Kolors + پشتیبان خودکار Leffa / FitDiT / IDM-VTON)</option>
+            <option value="kolors">Kolors Virtual Try-On (توصیه‌شده • تمیزترین خروجی • بدون سهمیه ZeroGPU)</option>
+            <option value="leffa">Leffa CVPR 2025 (بدون نشت پرامپت • فوق‌العاده تمیز)</option>
+            <option value="fitdit">FitDiT (نسل جدید DiT • ضد بیرون‌زدگی لباس اول)</option>
+            <option value="yisol">IDM-VTON رسمی (پشتیبانی از قلم‌موی حذف دستی)</option>
+            <option value="ootd">OOTDiffusion (عالی برای بالاتنه، مانتو و شلوار)</option>
+            <option value="nymbo">IDM-VTON سرور دوم (Nymbo)</option>
+            <option value="gemini">Google AI Studio (نیازمند اکانت فعال گوگل)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="advanced-bar">
+        <div class="slider-inline" title="افزایش این مقدار باعث می‌شود محدوده بیشتری اطراف لباس اول پاک شود تا آستین یا یقه لباس قبلی بیرون نزند (مخصوص FitDiT)">
+          <span>🛡️ گسترش حذف لباس قبلی:</span>
+          <input type="range" id="maskExpandRange" min="0" max="80" step="5" value="25" oninput="document.getElementById('maskExpandVal').textContent = this.value + 'px'">
+          <strong id="maskExpandVal" style="color:#f472b6; min-width:36px;">25px</strong>
+        </div>
+
+        <label class="toggle-wrap" title="در مدل Leffa باعث می‌شود مرز لباس و پوست کاملاً یکدست بازسازی شود">
+          <input type="checkbox" id="repaintModeCheck" checked>
+          <span>پاکسازی تمیز لبه‌ها (Repaint)</span>
+        </label>
+
+        <label class="toggle-wrap" title="کادربندی خودکار عکس‌های افقی یا مربعی در مدل IDM-VTON">
+          <input type="checkbox" id="autoCropCheck" checked>
+          <span>کادربندی هوشمند (Auto-Crop)</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="tryon-grid">
+
+      <!-- Card 1: Garment -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="step-number">۱</span>
+            <span>لباس انتخابی</span>
+          </div>
+          <span style="font-size: 0.82rem; color: #10b981; font-weight: 600;">✓ آماده پرو</span>
+        </div>
+
+        <div class="image-preview-box">
+          <img id="garmentImg" src="default-garment.jpg" alt="ژاکت بافت زیپ‌دار کرم LOGHMAN">
+          <div class="garment-info-tag">
+            <div>
+              <strong id="garmentTitle">ژاکت بافت پانچ جلو زیپ‌دار کرم</strong>
+              <div id="garmentSub" style="color: #94a3b8; font-size: 0.74rem;">برند LOGHMAN • پیش‌فرض فروشگاه</div>
+            </div>
+            <label class="btn-secondary" style="cursor: pointer; padding: 5px 12px; font-size: 0.78rem;">
+              📁 تعویض لباس
+              <input type="file" id="garmentInput" accept="image/*" style="display: none;">
+            </label>
+          </div>
+        </div>
+
+        <div class="chips-section">
+          <div class="chips-label">
+            <span>نوع دقیق لباس (برای جلوگیری از اضافه شدن زیپ یا یقه اشتباه):</span>
+          </div>
+          <div class="preset-chips" id="presetChips">
+            <button type="button" class="preset-chip active" data-cat="upper" data-desc="cream beige knitted zip-up perforated cardigan jacket">ژاکت بافت زیپ‌دار</button>
+            <button type="button" class="preset-chip" data-cat="upper" data-desc="plain short sleeve crewneck cotton t-shirt, smooth front, no zipper, no buttons">تیشرت ساده</button>
+            <button type="button" class="preset-chip" data-cat="upper" data-desc="women long sleeve button-up shirt blouse, neat collar, no zipper">شومیز / پیراهن</button>
+            <button type="button" class="preset-chip" data-cat="upper" data-desc="plain knitted pullover sweater, round neck, long sleeves, no zipper">پلیور ساده</button>
+            <button type="button" class="preset-chip" data-cat="upper" data-desc="casual pullover hoodie sweatshirt, relaxed fit">هودی / دورس</button>
+            <button type="button" class="preset-chip" data-cat="upper" data-desc="tailored women blazer jacket, lapel collar, open front">کت / بلیزر</button>
+            <button type="button" class="preset-chip" data-cat="dress" data-desc="long modest women coat manto dress, elegant full drape">مانتو / پیراهن بلند</button>
+            <button type="button" class="preset-chip" data-cat="lower" data-desc="tailored women trousers pants, clean waistband">شلوار / دامن</button>
+          </div>
+          <input type="text" id="garmentDesc" class="input-field" value="cream beige knitted zip-up perforated cardigan jacket" placeholder="توضیح انگلیسی لباس (فقط برای مدل IDM-VTON)">
+        </div>
+      </div>
+
+      <!-- Card 2: User Photo + Manual Mask Brush -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span class="step-number">۲</span>
+            <span>عکس خودتان را بدهید</span>
+          </div>
+          <span id="userPhotoStatus" style="font-size: 0.82rem; color: #f59e0b;">در انتظار آپلود عکس شما</span>
+        </div>
+
+        <div class="image-preview-box upload-area" id="uploadDropZone" onclick="if(!isBrushMode && !userFileBlob) document.getElementById('userPhotoInput').click()">
+          <div class="upload-placeholder" id="uploadPrompt">
+            <div class="upload-icon">📷</div>
+            <strong style="font-size: 1.05rem;">عکس خودت را اینجا بکش یا کلیک کن</strong>
+            <p style="color: var(--text-muted); font-size: 0.84rem; max-width: 320px; line-height: 1.6;">
+              عکس نیم‌تنه یا تمام‌قد روبه‌رو با نور خوب، طبیعی‌ترین خروجی هوش مصنوعی را می‌دهد.
+            </p>
+            <button type="button" class="btn-secondary" style="margin-top: 6px;">انتخاب عکس از سیستم / گوشی</button>
+          </div>
+
+          <div id="userStageWrap">
+            <img id="userImg" src="" alt="عکس کاربر">
+            <canvas id="maskCanvas"></canvas>
+          </div>
+
+          <input type="file" id="userPhotoInput" accept="image/*" style="display: none;">
+        </div>
+
+        <!-- Brush Controls (Shown after photo upload) -->
+        <div class="brush-toolbar" id="brushToolbar">
+          <div class="brush-toolbar-top">
+            <button type="button" class="btn-secondary" id="toggleBrushBtn" onclick="toggleBrushMode()">🖌️ قلم‌موی حذف دستی لباس قبلی</button>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+              <label style="font-size:0.76rem; color:#cbd5e1; display:flex; align-items:center; gap:5px;">
+                سایز:
+                <input type="range" id="brushSizeRange" min="10" max="70" value="32" style="width:70px; accent-color:#ec4899;">
+              </label>
+              <button type="button" class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="clearManualMask()">پاک کردن خط‌ها</button>
+              <button type="button" class="btn-secondary" style="padding:4px 10px; font-size:0.75rem;" onclick="document.getElementById('userPhotoInput').click()">تغییر عکس</button>
+            </div>
+          </div>
+          <div class="brush-hint" id="brushHint">
+            اختیاری: اگر قبلاً بخش‌هایی از لباس اول (مثل آستین یا زیپ) بیرون زد، قلم‌مو را روشن کن و روی کل لباس قبلی رنگ بکش تا ۱۰۰٪ پاک شود.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Action Bar -->
+    <div class="action-bar">
+      <button class="btn-tryon" id="startTryonBtn" onclick="processTryOn(false)" disabled>
+        <span>✨ پرو واقعی این لباس روی تن من (رایگان)</span>
+      </button>
+      <div class="action-tips">
+        مدل‌های <strong>Leffa</strong> و <strong>FitDiT</strong> نیازی به پرامپت متنی ندارند و فقط از خودِ عکس لباس الگو می‌گیرند (بدون نشت زیپ یا یقه اضافی).
+      </div>
+    </div>
+
+    <!-- Error Box -->
+    <div class="error-box" id="errorBox">
+      <strong id="errorTitle">خطا در ارتباط با سرور هوش مصنوعی</strong>
+      <div id="errorMessage"></div>
+      <div class="error-details" id="errorDetails"></div>
+    </div>
+
+    <!-- Result Section -->
+    <section class="result-section" id="resultSection">
+      <div class="result-header">
+        <span class="hero-badge">🎉 خروجی واقعی هوش مصنوعی آماده شد!</span>
+        <h2 style="font-size: 1.65rem; font-weight: 800; margin-top: 6px;">نمایش تن‌پوش لباس روی اندام شما</h2>
+        <div class="result-meta" id="resultMeta"></div>
+      </div>
+
+      <div class="view-switcher">
+        <button type="button" class="btn-secondary active-brush" id="btnSideView" onclick="switchResultView('side')">🖼️ نمایش کنار هم</button>
+        <button type="button" class="btn-secondary" id="btnSliderView" onclick="switchResultView('slider')">↔️ اسلایدر مقایسه قبل و بعد</button>
+        <button type="button" class="btn-secondary" id="btnMaskView" style="display:none;" onclick="toggleAiMaskPreview()">🎭 مشاهده ماسک هوش مصنوعی</button>
+      </div>
+
+      <!-- Interactive Before/After Slider -->
+      <div class="ba-slider-wrap" id="baSliderWrap">
+        <img id="baBeforeImg" src="" alt="قبل">
+        <div class="ba-after-layer" id="baAfterLayer">
+          <img id="baAfterImg" src="" alt="بعد">
+        </div>
+        <div class="ba-divider" id="baDivider"></div>
+        <div class="ba-handle" id="baHandle">⇄</div>
+        <span class="ba-tag before">قبل</span>
+        <span class="ba-tag after">بعد (پرو AI)</span>
+        <input type="range" class="ba-range" id="baRange" min="0" max="100" value="50" oninput="updateBaSlider(this.value)">
+      </div>
+
+      <!-- Side by Side View -->
+      <div class="result-comparison" id="resultComparisonGrid">
+        <div class="comparison-item">
+          <h4>لباس انتخابی</h4>
+          <img id="resultGarmentThumb" src="default-garment.jpg" alt="لباس">
+        </div>
+
+        <div class="comparison-item">
+          <h4>عکس اصلی شما</h4>
+          <img id="resultUserThumb" src="" alt="شما">
+        </div>
+
+        <div class="comparison-item highlight">
+          <h4 style="color: #f472b6; font-weight: 700;">★ خروجی واقعی اتاق پرو هوش مصنوعی</h4>
+          <img id="finalResultImg" src="" alt="نتیجه پرو واقعی">
+        </div>
+      </div>
+
+      <!-- Optional AI Mask Preview -->
+      <div id="aiMaskPreviewWrap" style="display:none; text-align:center; margin-top:1.25rem;">
+        <p style="font-size:0.82rem; color:var(--text-muted); margin-bottom:8px;">ناحیه‌ای که هوش مصنوعی برای حذف لباس قبلی تشخیص داد:</p>
+        <img id="aiMaskImg" src="" alt="ماسک هوش مصنوعی" style="max-height:280px; border-radius:12px; border:1px solid rgba(255,255,255,0.15);">
+      </div>
+
+      <div class="result-actions">
+        <button class="download-btn" onclick="downloadResult()">📥 دانلود عکس با کیفیت اصلی</button>
+        <button class="retry-btn" onclick="processTryOn(true)">🔄 تولید مجدد با Seed متفاوت</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Processing Overlay -->
+  <div class="processing-overlay" id="loadingOverlay">
+    <div class="spinner"></div>
+    <div class="processing-status" id="loadingStatus">در حال اتصال به سرور رایگان هوش مصنوعی...</div>
+    <div class="processing-subtext" id="loadingSubtext">لطفاً صبر کنید؛ تصویر شما در حال پردازش واقعی روی کارت گرافیک ابری است.</div>
+    <div class="processing-timer" id="loadingTimer">زمان سپری‌شده: ۰ ثانیه</div>
+    <button class="cancel-btn" onclick="cancelProcessing()">لغو عملیات</button>
+  </div>
+
+  <!-- Settings Modal -->
+  <div class="settings-modal" id="settingsModal" onclick="if(event.target === this) closeSettings()">
+    <div class="settings-card">
+      <h3>⚙️ تنظیمات توکن رایگان (اختیاری)</h3>
+      <p style="font-size: 0.83rem; color: var(--text-muted); line-height: 1.65;">
+        برنامه بدون هیچ کلیدی هم رایگان کار می‌کند. اما با وارد کردن یک توکن رایگان <strong>Hugging Face</strong>، سهمیه روزانه GPU شما از ۲ دقیقه به ۵ دقیقه افزایش می‌یابد و سرعت صف بیشتر می‌شود.
+      </p>
+
+      <div class="settings-field">
+        <label for="hfTokenInput">توکن رایگان Hugging Face (اختیاری):</label>
+        <input type="text" id="hfTokenInput" class="input-field" placeholder="hf_xxxxxxxxxxxxxxxxxxxxxxxxx">
+        <div class="settings-help">
+          ساخت رایگان در ۳۰ ثانیه: <a href="https://huggingface.co/settings/tokens" target="_blank">huggingface.co/settings/tokens</a> (دسترسی Read کافی است)
+        </div>
+      </div>
+
+      <div class="settings-field">
+        <label for="geminiKeyInput">کلید Google AI Studio (فقط برای موتور Gemini):</label>
+        <input type="text" id="geminiKeyInput" class="input-field" placeholder="AIza... یا AQ...">
+        <div class="settings-help">
+          فقط در صورتی از موتور Gemini استفاده کنید که کلید یک اکانت آزاد گوگل (دارای Free Tier یا Billing) را وارد کرده باشید.
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 1.25rem;">
+        <button class="btn-secondary" onclick="closeSettings()">بستن</button>
+        <button class="btn-secondary" style="background: var(--primary); border-color: transparent;" onclick="saveSettings()">ذخیره</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // State
+    let selectedCategory = 'upper'; // 'upper' | 'dress' | 'lower'
+    let userFileBlob = null;
+    let userImgNaturalW = 0;
+    let userImgNaturalH = 0;
+    let garmentFileBlob = null;
+    let finalResultUrl = null;
+    let latestAiMaskUrl = null;
+    let activeAbortController = null;
+    let timerInterval = null;
+    let isBrushMode = false;
+    let hasManualMask = false;
+    let isPointerDown = false;
+
+    let hfToken = localStorage.getItem('HF_TOKEN') || '';
+    let geminiApiKey = localStorage.getItem('GEMINI_API_KEY') || '';
+
+    // Preload default garment
+    window.addEventListener('DOMContentLoaded', async () => {
+      try {
+        const res = await fetch('default-garment.jpg');
+        garmentFileBlob = await res.blob();
+      } catch (e) {
+        console.error('Failed to preload default garment:', e);
+      }
+      initPresetChips();
+      initBrushCanvas();
+    });
+
+    // Category Selector
+    function setCategory(cat) {
+      selectedCategory = cat;
+      document.querySelectorAll('#categoryPills .cat-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.cat === cat);
+      });
+    }
+
+    // Preset Chips (Prevent stale "zip-up" prompt!)
+    function initPresetChips() {
+      document.querySelectorAll('#presetChips .preset-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          document.querySelectorAll('#presetChips .preset-chip').forEach(c => c.classList.remove('active'));
+          chip.classList.add('active');
+          document.getElementById('garmentDesc').value = chip.dataset.desc;
+          if (chip.dataset.cat) setCategory(chip.dataset.cat);
+        });
+      });
+    }
+
+    // Normalize & resize image cleanly (max 1024px)
+    function normalizeImageBlob(fileOrBlob, maxDim = 1024) {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        const url = URL.createObjectURL(fileOrBlob);
+        img.onload = () => {
+          URL.revokeObjectURL(url);
+          let { width, height } = img;
+          if (width > maxDim || height > maxDim) {
+            if (width >= height) {
+              height = Math.round((height * maxDim) / width);
+              width = maxDim;
+            } else {
+              width = Math.round((width * maxDim) / height);
+              height = maxDim;
+            }
+          }
+          const canvas = document.createElement('canvas');
+          canvas.width = width;
+          canvas.height = height;
+          const ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, width, height);
+          ctx.drawImage(img, 0, 0, width, height);
+          canvas.toBlob(
+            (blob) => (blob ? resolve({ blob, width, height }) : reject(new Error('تبدیل تصویر ناموفق بود'))),
+            'image/jpeg',
+            0.92
+          );
+        };
+        img.onerror = () => {
+          URL.revokeObjectURL(url);
+          reject(new Error('فایل تصویری معتبر نیست'));
+        };
+        img.src = url;
+      });
+    }
+
+    function blobToBase64(blob) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    }
+
+    // Garment Upload (Auto-resets stale "zip-up" description!)
+    document.getElementById('garmentInput').addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file) return;
+      try {
+        const norm = await normalizeImageBlob(file, 1024);
+        garmentFileBlob = norm.blob;
+        document.getElementById('garmentImg').src = URL.createObjectURL(garmentFileBlob);
+        document.getElementById('garmentTitle').textContent = file.name.replace(/\.[^.]+$/, '');
+        document.getElementById('garmentSub').textContent = 'لباس آپلودی شما • نوع لباس را از زیر انتخاب کنید';
+
+        // Reset stale zip-up prompt automatically!
+        document.querySelectorAll('#presetChips .preset-chip').forEach(c => {
+          c.classList.remove('active');
+          c.classList.add('highlight-hint');
+          setTimeout(() => c.classList.remove('highlight-hint'), 3200);
+        });
+        document.getElementById('garmentDesc').value =
+          'clean clothing garment matching the reference image exactly, preserve exact neckline, sleeves and smooth fabric, no extra zipper or unintended details';
+      } catch (err) {
+        showError('خطا در خواندن عکس لباس', 'فایل انتخابی معتبر نیست.', err.message);
+      }
+    });
+
+    // User Photo Upload & Drag/Drop
+    const userPhotoInput = document.getElementById('userPhotoInput');
+    const uploadDropZone = document.getElementById('uploadDropZone');
+    const uploadPrompt = document.getElementById('uploadPrompt');
+    const userStageWrap = document.getElementById('userStageWrap');
+    const userImg = document.getElementById('userImg');
+    const maskCanvas = document.getElementById('maskCanvas');
+    const startTryonBtn = document.getElementById('startTryonBtn');
+    const userPhotoStatus = document.getElementById('userPhotoStatus');
+    const brushToolbar = document.getElementById('brushToolbar');
+
+    userPhotoInput.addEventListener('change', (e) => {
+      if (e.target.files?.[0]) handleUserFile(e.target.files[0]);
+    });
+
+    uploadDropZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      if (!isBrushMode) uploadDropZone.classList.add('dragover');
+    });
+    uploadDropZone.addEventListener('dragleave', () => uploadDropZone.classList.remove('dragover'));
+    uploadDropZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      uploadDropZone.classList.remove('dragover');
+      if (e.dataTransfer.files?.[0]) handleUserFile(e.dataTransfer.files[0]);
+    });
+
+    async function handleUserFile(file) {
+      try {
+        const norm = await normalizeImageBlob(file, 1024);
+        userFileBlob = norm.blob;
+        userImgNaturalW = norm.width;
+        userImgNaturalH = norm.height;
+
+        userImg.onload = () => {
+          syncMaskCanvasSize();
+        };
+        userImg.src = URL.createObjectURL(userFileBlob);
+        uploadPrompt.style.display = 'none';
+        userStageWrap.style.display = 'flex';
+        uploadDropZone.classList.remove('upload-area');
+        brushToolbar.style.display = 'flex';
+        clearManualMask();
+
+        userPhotoStatus.textContent = '✓ عکس شما آماده پرو هوش مصنوعی است';
+        userPhotoStatus.style.color = '#10b981';
+        startTryonBtn.disabled = false;
+        hideError();
+      } catch (e) {
+        showError('خطا در خواندن عکس', 'لطفاً یک فایل تصویری معتبر (JPG یا PNG) انتخاب کنید.', e.message);
+      }
+    }
+
+    // Manual Mask Brush (Eliminates stubborn old clothing 100%)
+    function syncMaskCanvasSize() {
+      if (!userImg.clientWidth || !userImg.clientHeight) return;
+      maskCanvas.width = userImgNaturalW || userImg.naturalWidth;
+      maskCanvas.height = userImgNaturalH || userImg.naturalHeight;
+      maskCanvas.style.width = userImg.clientWidth + 'px';
+      maskCanvas.style.height = userImg.clientHeight + 'px';
+    }
+
+    window.addEventListener('resize', () => {
+      if (userFileBlob) {
+        maskCanvas.style.width = userImg.clientWidth + 'px';
+        maskCanvas.style.height = userImg.clientHeight + 'px';
+      }
+    });
+
+    function toggleBrushMode() {
+      isBrushMode = !isBrushMode;
+      const btn = document.getElementById('toggleBrushBtn');
+      btn.classList.toggle('active-brush', isBrushMode);
+      maskCanvas.classList.toggle('drawing', isBrushMode);
+      document.getElementById('brushHint').textContent = isBrushMode
+        ? 'قلم‌مو فعال شد! روی تمام قسمت‌های لباس قبلی (یقه، زیپ، آستین‌ها) بکشید تا کاملاً پاک شوند. (برای این حالت خودکار از IDM-VTON با ماسک دستی شما استفاده می‌شود)'
+        : 'اختیاری: اگر قبلاً بخش‌هایی از لباس اول (مثل آستین یا زیپ) بیرون زد، قلم‌مو را روشن کن و روی کل لباس قبلی رنگ بکش تا ۱۰۰٪ پاک شود.';
+    }
+
+    function clearManualMask() {
+      const ctx = maskCanvas.getContext('2d');
+      ctx.clearRect(0, 0, maskCanvas.width, maskCanvas.height);
+      hasManualMask = false;
+    }
+
+    function initBrushCanvas() {
+      const getPos = (e) => {
+        const rect = maskCanvas.getBoundingClientRect();
+        const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: ((clientX - rect.left) / rect.width) * maskCanvas.width,
+          y: ((clientY - rect.top) / rect.height) * maskCanvas.height
+        };
+      };
+
+      const drawDot = (x, y) => {
+        const ctx = maskCanvas.getContext('2d');
+        const radius = Number(document.getElementById('brushSizeRange').value) * (maskCanvas.width / Math.max(maskCanvas.clientWidth, 1));
+        ctx.fillStyle = 'rgba(236, 72, 153, 0.72)';
+        ctx.beginPath();
+        ctx.arc(x, y, radius / 2, 0, Math.PI * 2);
+        ctx.fill();
+        hasManualMask = true;
+      };
+
+      let lastPos = null;
+      const drawLine = (from, to) => {
+        const ctx = maskCanvas.getContext('2d');
+        const size = Number(document.getElementById('brushSizeRange').value) * (maskCanvas.width / Math.max(maskCanvas.clientWidth, 1));
+        ctx.strokeStyle = 'rgba(236, 72, 153, 0.72)';
+        ctx.lineWidth = size;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(from.x, from.y);
+        ctx.lineTo(to.x, to.y);
+        ctx.stroke();
+        hasManualMask = true;
+      };
+
+      const onStart = (e) => {
+        if (!isBrushMode) return;
+        e.preventDefault();
+        isPointerDown = true;
+        lastPos = getPos(e);
+        drawDot(lastPos.x, lastPos.y);
+      };
+      const onMove = (e) => {
+        if (!isBrushMode || !isPointerDown) return;
+        e.preventDefault();
+        const cur = getPos(e);
+        if (lastPos) drawLine(lastPos, cur);
+        lastPos = cur;
+      };
+      const onEnd = () => { isPointerDown = false; lastPos = null; };
+
+      maskCanvas.addEventListener('mousedown', onStart);
+      maskCanvas.addEventListener('mousemove', onMove);
+      window.addEventListener('mouseup', onEnd);
+      maskCanvas.addEventListener('touchstart', onStart, { passive: false });
+      maskCanvas.addEventListener('touchmove', onMove, { passive: false });
+      window.addEventListener('touchend', onEnd);
+    }
+
+    function exportManualMaskBlobs() {
+      return new Promise((resolve) => {
+        // Export transparent alpha mask layer (solid white where drawn)
+        const layerCanvas = document.createElement('canvas');
+        layerCanvas.width = maskCanvas.width;
+        layerCanvas.height = maskCanvas.height;
+        const lctx = layerCanvas.getContext('2d');
+        lctx.drawImage(maskCanvas, 0, 0);
+        // Make painted pixels solid opaque white on transparent bg for Gradio ImageEditor
+        const imgData = lctx.getImageData(0, 0, layerCanvas.width, layerCanvas.height);
+        const d = imgData.data;
+        for (let i = 0; i < d.length; i += 4) {
+          if (d[i + 3] > 10) {
+            d[i] = 255; d[i + 1] = 255; d[i + 2] = 255; d[i + 3] = 255;
+          } else {
+            d[i + 3] = 0;
+          }
+        }
+        lctx.putImageData(imgData, 0, 0);
+
+        layerCanvas.toBlob((layerBlob) => {
+          resolve({ layerBlob });
+        }, 'image/png');
+      });
+    }
+
+    // Gradio Helpers
+    function hfHeaders(extra = {}) {
+      const h = { ...extra };
+      if (hfToken) h['Authorization'] = `Bearer ${hfToken}`;
+      return h;
+    }
+
+    async function uploadToGradio(host, prefix, blob, filename, signal) {
+      const fd = new FormData();
+      fd.append('files', blob, filename);
+      const r = await fetch(`${host}${prefix}/upload`, {
+        method: 'POST',
+        headers: hfHeaders(),
+        body: fd,
+        signal
+      });
+      if (!r.ok) {
+        const txt = await r.text().catch(() => '');
+        throw new Error(`خطا در آپلود به سرور (${r.status}): ${txt.slice(0, 160)}`);
+      }
+      const paths = await r.json();
+      if (!Array.isArray(paths) || !paths[0]) throw new Error('پاسخ آپلود نامعتبر بود');
+      return {
+        path: paths[0],
+        url: `${host}${prefix}/file=${paths[0]}`,
+        orig_name: filename,
+        size: blob.size,
+        mime_type: blob.type || 'image/jpeg',
+        meta: { _type: 'gradio.FileData' }
+      };
+    }
+
+    async function runGradioCallRaw(host, prefix, endpoint, data, label, signal, timeoutMs = 115000) {
+      const r = await fetch(`${host}${prefix}/call/${endpoint}`, {
+        method: 'POST',
+        headers: hfHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ data }),
+        signal
+      });
+      if (!r.ok) {
+        const txt = await r.text().catch(() => '');
+        throw new Error(`${label} خطای ${r.status}: ${txt.slice(0, 220)}`);
+      }
+      const { event_id } = await r.json();
+      if (!event_id) throw new Error(`${label}: شناسه پردازش دریافت نشد`);
+
+      const sseRes = await fetch(`${host}${prefix}/call/${endpoint}/${event_id}`, {
+        headers: hfHeaders(),
+        signal
+      });
+      if (!sseRes.ok) throw new Error(`${label} خطای جریان پاسخ (${sseRes.status})`);
+
+      const reader = sseRes.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      let lastEvent = '';
+      const deadline = Date.now() + timeoutMs;
+
+      while (Date.now() < deadline) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const lines = buf.split('\n');
+        buf = lines.pop();
+        for (const rawLine of lines) {
+          const line = rawLine.trim();
+          if (line.startsWith('event:')) {
+            lastEvent = line.slice(6).trim();
+          } else if (line.startsWith('data:')) {
+            const payload = line.slice(5).trim();
+            if (lastEvent === 'heartbeat') continue;
+            if (lastEvent === 'error') {
+              reader.cancel().catch(() => {});
+              throw new Error(`${label}: ${payload || 'سهمیه موقت GPU پر شده یا سرور مشغول است'}`);
+            }
+            if (lastEvent === 'complete') {
+              reader.cancel().catch(() => {});
+              return JSON.parse(payload);
+            }
+          }
+        }
+      }
+      reader.cancel().catch(() => {});
+      throw new Error(`${label}: زمان انتظار به پایان رسید`);
+    }
+
+    function extractGradioImgUrl(item, host, prefix) {
+      if (!item) return null;
+      if (typeof item === 'string') return item.startsWith('http') ? item : `${host}${prefix}/file=${item}`;
+      if (item.image) return extractGradioImgUrl(item.image, host, prefix);
+      if (item.url) return item.url;
+      if (item.path) return `${host}${prefix}/file=${item.path}`;
+      return null;
+    }
+
+    // Engine 1: Leffa (CVPR 2025 — No Prompt Leak! Supports Upper, Dress, Lower + Repaint)
+    async function runLeffa(personBlob, garmentBlob, seed, signal) {
+      const host = 'https://franciszzj-leffa.hf.space';
+      const prefix = '/gradio_api';
+      const label = 'Leffa (CVPR 2025)';
+      updateLoading(`آپلود تصاویر به ${label}...`, 'مدل Leffa بدون نیاز به پرامپت متنی، بافت واقعی لباس را روی اندام تطبیق می‌دهد');
+      const [pFile, gFile] = await Promise.all([
+        uploadToGradio(host, prefix, personBlob, 'person.jpg', signal),
+        uploadToGradio(host, prefix, garmentBlob, 'garment.jpg', signal)
+      ]);
+
+      const modelType = selectedCategory === 'upper' ? 'viton_hd' : 'dress_code';
+      const garmType = selectedCategory === 'upper' ? 'upper_body' : (selectedCategory === 'lower' ? 'lower_body' : 'dresses');
+      const repaint = document.getElementById('repaintModeCheck').checked;
+
+      updateLoading(`پردازش GPU در ${label}...`, 'در حال حذف لباس قبلی و رندر واقعی بافت لباس جدید...');
+      const parsed = await runGradioCallRaw(
+        host, prefix, 'leffa_predict_vt',
+        [pFile, gFile, false, 30, 2.5, seed, modelType, garmType, repaint],
+        label, signal
+      );
+      const outUrl = extractGradioImgUrl(parsed?.[0], host, prefix);
+      const maskUrl = extractGradioImgUrl(parsed?.[1], host, prefix);
+      if (!outUrl) throw new Error(`${label}: تصویری در خروجی یافت نشد`);
+      return { imageUrl: outUrl, maskUrl };
+    }
+
+    // Engine 2: FitDiT (SD3/DiT Architecture — Supports Mask Expansion Offset to stop garment leak!)
+    async function runFitDiT(personBlob, garmentBlob, seed, signal) {
+      const host = 'https://boyuanjiang-fitdit.hf.space';
+      const prefix = '/gradio_api';
+      const label = 'FitDiT (ضد بیرون‌زدگی لباس اول)';
+      updateLoading(`آپلود تصاویر به ${label}...`, 'در حال ارسال به سرور FitDiT...');
+      const [pFile, gFile] = await Promise.all([
+        uploadToGradio(host, prefix, personBlob, 'person.jpg', signal),
+        uploadToGradio(host, prefix, garmentBlob, 'garment.jpg', signal)
+      ]);
+
+      const cat = selectedCategory === 'upper' ? 'Upper-body' : (selectedCategory === 'lower' ? 'Lower-body' : 'Dresses');
+      const expand = Number(document.getElementById('maskExpandRange').value) || 0;
+
+      updateLoading(`مرحله ۱ از ۲ در ${label}: ساخت ماسک گسترده...`, `در حال گسترش ماسک به میزان ${expand}px برای پاکسازی کامل لباس قبلی`);
+      const maskOut = await runGradioCallRaw(
+        host, prefix, 'generate_mask',
+        [pFile, cat, Math.round(expand * 0.5), expand, expand, expand],
+        `${label} (ماسک)`, signal
+      );
+      const preMask = maskOut?.[0];
+      const poseImage = maskOut?.[1];
+      if (!preMask || !poseImage) throw new Error(`${label}: ساخت ماسک ناموفق بود`);
+
+      updateLoading(`مرحله ۲ از ۲ در ${label}: رندر نهایی لباس...`, 'در حال پوشاندن لباس جدید روی اندام شما با کیفیت ۷۶۸×۱۰۲۴...');
+      const procOut = await runGradioCallRaw(
+        host, prefix, 'process',
+        [pFile, gFile, preMask, poseImage, 20, 2, seed, 1, '768x1024'],
+        label, signal
+      );
+      const gallery = procOut?.[0];
+      const outUrl = extractGradioImgUrl(Array.isArray(gallery) ? gallery[0] : gallery, host, prefix);
+      if (!outUrl) throw new Error(`${label}: تصویری تولید نشد`);
+      return { imageUrl: outUrl, maskUrl: extractGradioImgUrl(preMask?.composite || preMask?.background, host, prefix) };
+    }
+
+    // Engine 3 & 4: IDM-VTON (yisol / nymbo — Supports Manual Brush Mask!)
+    async function runIdmVton(host, label, personBlob, garmentBlob, seed, signal) {
+      updateLoading(`آپلود تصاویر به ${label}...`, hasManualMask ? 'در حال ارسال عکس و ماسک دستی قلم‌موی شما...' : 'در حال ارسال عکس شما و لباس...');
+      const uploads = [
+        uploadToGradio(host, '', personBlob, 'person.jpg', signal),
+        uploadToGradio(host, '', garmentBlob, 'garment.jpg', signal)
+      ];
+      let layerFile = null;
+      if (hasManualMask) {
+        const { layerBlob } = await exportManualMaskBlobs();
+        uploads.push(uploadToGradio(host, '', layerBlob, 'manual_mask.png', signal));
+      }
+      const results = await Promise.all(uploads);
+      const pFile = results[0];
+      const gFile = results[1];
+      if (hasManualMask) layerFile = results[2];
+
+      const garmentDesc = document.getElementById('garmentDesc').value.trim() || 'clean garment matching the reference image exactly';
+      const autoCrop = document.getElementById('autoCropCheck').checked;
+      const useAutoMask = !hasManualMask;
+
+      const editorDict = hasManualMask
+        ? { background: pFile, layers: [layerFile], composite: pFile }
+        : { background: pFile, layers: [], composite: null };
+
+      updateLoading(`در حال پردازش GPU در ${label}...`, useAutoMask ? 'تشخیص خودکار ناحیه لباس و تطبیق بافت...' : 'پاکسازی دقیق ناحیه رنگ‌شده توسط قلم‌موی شما...');
+      const parsed = await runGradioCallRaw(
+        host, '', 'tryon',
+        [editorDict, gFile, garmentDesc, useAutoMask, autoCrop, 30, seed],
+        label, signal
+      );
+      const outUrl = extractGradioImgUrl(parsed?.[0], host, '');
+      const maskUrl = extractGradioImgUrl(parsed?.[1], host, '');
+      if (!outUrl) throw new Error(`${label}: تصویری تولید نشد`);
+      return { imageUrl: outUrl, maskUrl };
+    }
+
+    // Engine 5: OOTDiffusion (Supports Upper, Lower, Dress — Pure Image Conditioned)
+    async function runOOTD(personBlob, garmentBlob, seed, signal) {
+      const host = 'https://levihsu-ootdiffusion.hf.space';
+      const prefix = '/gradio_api';
+      const label = 'OOTDiffusion';
+      updateLoading(`آپلود تصاویر به ${label}...`, 'در حال ارسال تصاویر به سرور OOTDiffusion...');
+      const [pFile, gFile] = await Promise.all([
+        uploadToGradio(host, prefix, personBlob, 'person.jpg', signal),
+        uploadToGradio(host, prefix, garmentBlob, 'garment.jpg', signal)
+      ]);
+
+      updateLoading(`پردازش GPU در ${label}...`, 'تطبیق واقعی لباس روی اندام بدون وابستگی به پرامپت...');
+      let parsed;
+      if (selectedCategory === 'upper') {
+        parsed = await runGradioCallRaw(host, prefix, 'process_hd', [pFile, gFile, 1, 20, 2, seed], label, signal);
+      } else {
+        const cat = selectedCategory === 'lower' ? 'Lower-body' : 'Dress';
+        parsed = await runGradioCallRaw(host, prefix, 'process_dc', [pFile, gFile, cat, 1, 20, 2, seed], label, signal);
+      }
+      const gallery = parsed?.[0];
+      const outUrl = extractGradioImgUrl(Array.isArray(gallery) ? gallery[0] : gallery, host, prefix);
+      if (!outUrl) throw new Error(`${label}: تصویری در خروجی یافت نشد`);
+      return { imageUrl: outUrl, maskUrl: null };
+    }
+
+    // Engine 6: Kwai Kolors Virtual Try-On (No ZeroGPU limit)
+    async function runKolors(personBlob, garmentBlob, seed, signal) {
+      const host = 'https://kwai-kolors-kolors-virtual-try-on.hf.space';
+      const label = 'Kolors Virtual Try-On';
+      updateLoading(`آپلود تصاویر به ${label}...`, 'در حال ارسال به سرور اختصاصی Kolors...');
+      const [pFile, gFile] = await Promise.all([
+        uploadToGradio(host, '', personBlob, 'person.jpg', signal),
+        uploadToGradio(host, '', garmentBlob, 'garment.jpg', signal)
+      ]);
+
+      const session_hash = Math.random().toString(36).slice(2, 12);
+      const joinRes = await fetch(`${host}/queue/join`, {
+        method: 'POST',
+        headers: hfHeaders({ 'Content-Type': 'application/json' }),
+        body: JSON.stringify({ data: [pFile, gFile, seed, true], event_data: null, fn_index: 2, trigger_id: 21, session_hash }),
+        signal
+      });
+      if (!joinRes.ok) throw new Error(`Kolors queue error (${joinRes.status})`);
+
+      const sseRes = await fetch(`${host}/queue/data?session_hash=${session_hash}`, { headers: hfHeaders(), signal });
+      const reader = sseRes.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = '';
+      const deadline = Date.now() + 120000;
+
+      while (Date.now() < deadline) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+        const lines = buf.split('\n');
+        buf = lines.pop();
+        for (const rawLine of lines) {
+          const line = rawLine.trim();
+          if (!line.startsWith('data:')) continue;
+          let msg;
+          try { msg = JSON.parse(line.slice(5).trim()); } catch { continue; }
+          if (msg.msg === 'estimation') {
+            const rank = typeof msg.rank === 'number' ? msg.rank + 1 : 1;
+            updateLoading(`در صف پردازش ${label}...`, `نوبت شما در صف: نفر ${rank}`);
+          } else if (msg.msg === 'process_starts') {
+            updateLoading(`پردازش هوش مصنوعی در ${label} شروع شد!`, 'در حال پوشاندن واقعی لباس...');
+          } else if (msg.msg === 'process_completed') {
+            reader.cancel().catch(() => {});
+            const outUrl = extractGradioImgUrl(msg.output?.data?.[0], host, '');
+            if (msg.success && outUrl) return { imageUrl: outUrl, maskUrl: null };
+            throw new Error(`Kolors: ${msg.output?.error || msg.output?.data?.[2] || 'سرور شلوغ است'}`);
+          }
+        }
+      }
+      reader.cancel().catch(() => {});
+      throw new Error('Kolors: صف سرور شلوغ بود');
+    }
+
+    // Engine 7: Optional Google AI Studio (Gemini Image)
+    async function runGeminiNative(personBlob, garmentBlob, signal) {
+      if (!geminiApiKey) throw new Error('ابتدا کلید Google AI Studio را در تنظیمات وارد کنید');
+      updateLoading('ارسال به Google AI Studio (Gemini Image)...', 'در حال ویرایش معنایی تصویر با مدل تصویری گوگل');
+      const [pB64, gB64] = await Promise.all([blobToBase64(personBlob), blobToBase64(garmentBlob)]);
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key=${encodeURIComponent(geminiApiKey)}`;
+      const r = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        signal,
+        body: JSON.stringify({
+          contents: [{
+            parts: [
+              { text: 'Photorealistic virtual try-on edit: Completely remove the person’s original clothing in the target area and dress them ONLY in the exact garment from the second image. Do NOT keep any zipper, collar, or sleeves from the original clothing. Preserve the person’s exact face, hair, hands, pose, and background unchanged.' },
+              { inlineData: { mimeType: 'image/jpeg', data: pB64 } },
+              { inlineData: { mimeType: 'image/jpeg', data: gB64 } }
+            ]
+          }],
+          generationConfig: { responseModalities: ['IMAGE', 'TEXT'] }
+        })
+      });
+      const data = await r.json();
+      if (data.error) throw new Error(`Google AI Studio (${data.error.code}): ${data.error.message}`);
+      const imgPart = (data.candidates?.[0]?.content?.parts || []).find(p => p.inlineData?.data);
+      if (!imgPart) throw new Error('گوگل تصویری برنگرداند');
+      return { imageUrl: `data:${imgPart.inlineData.mimeType || 'image/png'};base64,${imgPart.inlineData.data}`, maskUrl: null };
+    }
+
+    // Main Orchestrator
+    async function processTryOn(randomizeSeed = false) {
+      if (!userFileBlob || !garmentFileBlob) {
+        showError('تصاویر کامل نیست', 'لطفاً ابتدا عکس خودتان را آپلود کنید.', '');
+        return;
+      }
+
+      hideError();
+      const selected = document.getElementById('engineSelect').value;
+      const seed = randomizeSeed ? Math.floor(Math.random() * 999999) : 42;
+
+      document.getElementById('loadingOverlay').style.display = 'flex';
+      activeAbortController = new AbortController();
+      const signal = activeAbortController.signal;
+      const startTime = Date.now();
+      document.getElementById('loadingTimer').textContent = 'زمان سپری‌شده: ۰ ثانیه';
+      timerInterval = setInterval(() => {
+        document.getElementById('loadingTimer').textContent = `زمان سپری‌شده: ${Math.floor((Date.now() - startTime) / 1000)} ثانیه`;
+      }, 1000);
+
+      const runners = {
+        leffa: { name: 'Leffa (CVPR 2025)', fn: () => runLeffa(userFileBlob, garmentFileBlob, seed, signal) },
+        fitdit: { name: 'FitDiT (ضد بیرون‌زدگی)', fn: () => runFitDiT(userFileBlob, garmentFileBlob, seed, signal) },
+        yisol: { name: 'IDM-VTON رسمی', fn: () => runIdmVton('https://yisol-idm-vton.hf.space', 'IDM-VTON رسمی', userFileBlob, garmentFileBlob, seed, signal) },
+        ootd: { name: 'OOTDiffusion', fn: () => runOOTD(userFileBlob, garmentFileBlob, seed, signal) },
+        nymbo: { name: 'IDM-VTON (Nymbo)', fn: () => runIdmVton('https://nymbo-virtual-try-on.hf.space', 'IDM-VTON (Nymbo)', userFileBlob, garmentFileBlob, seed, signal) },
+        kolors: { name: 'Kolors Virtual Try-On', fn: () => runKolors(userFileBlob, garmentFileBlob, seed, signal) },
+        gemini: { name: 'Google AI Studio', fn: () => runGeminiNative(userFileBlob, garmentFileBlob, signal) }
+      };
+
+      let order;
+      if (selected !== 'auto') {
+        order = [selected];
+      } else if (hasManualMask) {
+        // User painted a manual brush mask -> prioritize IDM-VTON which directly consumes manual brush layers
+        order = ['yisol', 'nymbo', 'fitdit', 'kolors'];
+      } else if (selectedCategory === 'upper') {
+        // Kolors first (cleanest anti-leak, no prompt bias, no ZeroGPU daily quota!), then Leffa/FitDiT/IDM-VTON/OOTD
+        order = ['kolors', 'leffa', 'fitdit', 'yisol', 'ootd', 'nymbo'];
+      } else {
+        // Dress / Manto / Lower-body engines
+        order = ['kolors', 'fitdit', 'leffa', 'ootd'];
+      }
+
+      const zeroGpuEngines = new Set(['leffa', 'fitdit', 'yisol', 'ootd', 'nymbo']);
+      let zeroGpuExhausted = false;
+      const errors = [];
+      let finalOut = null;
+      let usedEngineName = '';
+
+      try {
+        for (const key of order) {
+          if (signal.aborted) throw new Error('عملیات توسط شما لغو شد.');
+          if (zeroGpuExhausted && zeroGpuEngines.has(key)) continue;
+          try {
+            finalOut = await runners[key].fn();
+            usedEngineName = runners[key].name;
+            break;
+          } catch (err) {
+            if (signal.aborted) throw new Error('عملیات توسط شما لغو شد.');
+            console.warn(`Engine ${key} failed:`, err);
+            const msgStr = String(err.message || '');
+            if (msgStr.toLowerCase().includes('zerogpu') || msgStr.toLowerCase().includes('gpu quota')) {
+              zeroGpuExhausted = true;
+            }
+            errors.push(`[${runners[key].name}] ${msgStr}`);
+            if (order.length > 1) {
+              updateLoading(`سرور ${runners[key].name} در دسترس نبود...`, 'در حال جابه‌جایی خودکار به موتور هوش مصنوعی بعدی...');
+            }
+          }
+        }
+
+        stopLoading();
+
+        if (!finalOut?.imageUrl) {
+          showError(
+            'در این لحظه سرورهای رایگان پاسخ ندادند',
+            'اگر سهمیه روزانه ZeroGPU پر شده است، از دکمه «⚙️ تنظیمات توکن» یک توکن رایگان Hugging Face وارد کنید یا موتور «Kolors» را انتخاب نمایید.',
+            errors.join('\n')
+          );
+          return;
+        }
+
+        // Display REAL AI result!
+        const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+        finalResultUrl = finalOut.imageUrl;
+        latestAiMaskUrl = finalOut.maskUrl || null;
+
+        document.getElementById('resultGarmentThumb').src = document.getElementById('garmentImg').src;
+        document.getElementById('resultUserThumb').src = userImg.src;
+        document.getElementById('finalResultImg').src = finalResultUrl;
+        document.getElementById('baBeforeImg').src = userImg.src;
+        document.getElementById('baAfterImg').src = finalResultUrl;
+        updateBaSlider(50);
+        document.getElementById('baRange').value = 50;
+
+        document.getElementById('resultMeta').textContent =
+          `موتور استفاده‌شده: ${usedEngineName} • زمان پردازش: ${elapsed} ثانیه • Seed: ${seed}`;
+
+        const maskBtn = document.getElementById('btnMaskView');
+        const maskWrap = document.getElementById('aiMaskPreviewWrap');
+        maskWrap.style.display = 'none';
+        if (latestAiMaskUrl) {
+          document.getElementById('aiMaskImg').src = latestAiMaskUrl;
+          maskBtn.style.display = 'inline-flex';
+        } else {
+          maskBtn.style.display = 'none';
+        }
+
+        const resultSection = document.getElementById('resultSection');
+        resultSection.style.display = 'block';
+        resultSection.scrollIntoView({ behavior: 'smooth' });
+
+      } catch (err) {
+        stopLoading();
+        showError('عملیات متوقف شد', err.message, errors.join('\n'));
+      }
+    }
+
+    // View Switchers & Slider
+    function switchResultView(mode) {
+      const isSlider = mode === 'slider';
+      document.getElementById('baSliderWrap').style.display = isSlider ? 'block' : 'none';
+      document.getElementById('resultComparisonGrid').style.display = isSlider ? 'none' : 'grid';
+      document.getElementById('btnSliderView').classList.toggle('active-brush', isSlider);
+      document.getElementById('btnSideView').classList.toggle('active-brush', !isSlider);
+    }
+
+    function updateBaSlider(val) {
+      const pct = Number(val);
+      document.getElementById('baAfterLayer').style.clipPath = `inset(0 0 0 ${pct}%)`;
+      document.getElementById('baDivider').style.left = `${pct}%`;
+      document.getElementById('baHandle').style.left = `${pct}%`;
+    }
+
+    function toggleAiMaskPreview() {
+      const wrap = document.getElementById('aiMaskPreviewWrap');
+      wrap.style.display = wrap.style.display === 'none' ? 'block' : 'none';
+    }
+
+    function updateLoading(status, subtext) {
+      document.getElementById('loadingStatus').textContent = status;
+      document.getElementById('loadingSubtext').textContent = subtext;
+    }
+
+    function stopLoading() {
+      clearInterval(timerInterval);
+      document.getElementById('loadingOverlay').style.display = 'none';
+      activeAbortController = null;
+    }
+
+    function cancelProcessing() {
+      if (activeAbortController) activeAbortController.abort();
+      stopLoading();
+    }
+
+    function showError(title, msg, details) {
+      document.getElementById('errorTitle').textContent = title;
+      document.getElementById('errorMessage').textContent = msg;
+      const detEl = document.getElementById('errorDetails');
+      detEl.textContent = details || '';
+      detEl.style.display = details ? 'block' : 'none';
+      const box = document.getElementById('errorBox');
+      box.style.display = 'block';
+      box.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function hideError() {
+      document.getElementById('errorBox').style.display = 'none';
+    }
+
+    async function downloadResult() {
+      if (!finalResultUrl) return;
+      try {
+        const res = await fetch(finalResultUrl);
+        const blob = await res.blob();
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'vfit-pro-tryon.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        URL.revokeObjectURL(url);
+      } catch {
+        window.open(finalResultUrl, '_blank');
+      }
+    }
+
+    function openSettings() {
+      document.getElementById('hfTokenInput').value = hfToken;
+      document.getElementById('geminiKeyInput').value = geminiApiKey;
+      document.getElementById('settingsModal').style.display = 'flex';
+    }
+
+    function closeSettings() {
+      document.getElementById('settingsModal').style.display = 'none';
+    }
+
+    function saveSettings() {
+      hfToken = document.getElementById('hfTokenInput').value.trim();
+      geminiApiKey = document.getElementById('geminiKeyInput').value.trim();
+      localStorage.setItem('HF_TOKEN', hfToken);
+      localStorage.setItem('GEMINI_API_KEY', geminiApiKey);
+      closeSettings();
+    }
+  </script>
+</body>
+</html>
